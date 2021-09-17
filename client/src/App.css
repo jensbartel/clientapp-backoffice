@@ -82,6 +82,15 @@ a {
   color: #383838;
 }
 
+.chrome-patch {
+  height: 300px;
+  width: 100%;
+  position: absolute;
+  top: -300px;
+  background-color: #fff;
+  z-index: 9999;
+}
+
 .container {
   max-width: 1280px;
 }
@@ -207,6 +216,10 @@ a {
   background-color: #555;
 }
 
+.not-found {
+  margin: 1.5rem 12.5% 0;
+}
+
 .modal-content h2 {
   margin-top: -1rem;
   color: #c4082a;
@@ -228,10 +241,6 @@ a {
 }
 .modal-content .move-up {
   margin-top: -1rem;
-}
-
-.not-found {
-  margin: 1.5rem 12.5% 0;
 }
 
 /*# sourceMappingURL=App.css.map */

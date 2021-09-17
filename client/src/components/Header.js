@@ -8,11 +8,14 @@ const Header = () => {
     const { clearErrors } = authContext;
 
     return (
-        <div className='header' id='header'>
-            <Link to='/'>
-                <img src={Logo} alt='' className='logo' id='logo' onClick={() => clearErrors()} />
-            </Link>
-        </div>
+        <>
+            <div className='chrome-patch'></div>
+            <div className='header' id='header'>
+                <Link to='/'>
+                    <img src={Logo} alt='' className='logo' id='logo' onClick={() => clearErrors()} />
+                </Link>
+            </div>
+        </>
     );
 };
 
