@@ -11,3 +11,5 @@ node_modules
 
 npm-debug.log*
 .env
+
+country_codes.json

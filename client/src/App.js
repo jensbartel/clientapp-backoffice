@@ -13,6 +13,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import Home from './components/Home';
 import Login from './components/Login';
+import NotFound from './components/NotFound';
 import PrivateRoute from './components/routing/PrivateRoute';
 
 if (localStorage.token) {
@@ -34,6 +35,7 @@ const App = () => {
                                         <PrivateRoute exact path='/clients' component={ClientsOverview} />
                                         <PrivateRoute exact path='/all' component={ClientsAll} />
                                         <Route exact path='/login' component={Login} />
+                                        <Route path='/' component={NotFound} />
                                     </Switch>
                                     <Footer />
                                 </div>
