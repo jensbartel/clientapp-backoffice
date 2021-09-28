@@ -1,6 +1,7 @@
 import { useReducer } from 'react';
 import CsvContext from './csvContext';
 import csvReducer from './csvReducer';
+import codes from '../../utils/country_codes.json';
 
 import { GENERATE_CSV, CLEAR_CSV, GENERATE_CSV_ONEUSER } from '../types';
 
@@ -32,6 +33,14 @@ const CsvState = props => {
             returnValue = item.slice(2);
         } else return item;
         return returnValue;
+    };
+
+    const countryCode = value => {
+        const val = value.toLowerCase();
+        if (Object.keys(codes).includes(val) === false) {
+            return value;
+        }
+        return codes[val];
     };
 
     const generate = clients => {
@@ -80,7 +89,7 @@ const CsvState = props => {
             arrayToPush[0] = counter.toString();
             arrayToPush[5] = client.clientName;
             arrayToPush[26] = client.company;
-            arrayToPush[8] = client.country;
+            arrayToPush[8] = countryCode(client.country);
             arrayToPush[1] = client.date.slice(0, 10).replaceAll('-', '/');
             arrayToPush[7] = client.email;
             arrayToPush[4] = client.greeting;
