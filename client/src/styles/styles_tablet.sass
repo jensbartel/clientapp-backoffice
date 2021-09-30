@@ -1,0 +1,33 @@
+// NOTE: app is expected to be used only on Apple tablets
+=iPad-portrait
+    .menu
+        margin: 1.5rem 7.5% 1rem
+
+    .container
+        .user-grid
+            grid-template-columns: repeat(2, 1fr)
+            margin: 0 7.5%
+
+    .clients-container
+        margin: 0 7.5% 0
+
+    .clients-table
+        grid-template-columns: 1fr 1.6fr 1.3fr 0.8fr 0.3fr
+
+// iPad Pro
+@media only screen and (min-width: 1024px) and (max-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2)
+    +iPad-portrait
+
+// @media only screen and (min-width: 1366px) and (max-width: 1366px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2)
+
+// iPad 7th, 8th gen
+@media only screen and (min-width: 810px) and (max-width: 810px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2)
+    +iPad-portrait
+
+// @media only screen and (min-width: 1080px) and (max-width: 1080px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2)
+
+// iPad 3rd-6th gen, iPad Pro 9.7", iPad Air 1 + 2, iPad Mini 2-4  
+@media only screen and (min-width: 768px) and (max-width: 768px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2)
+    +iPad-portrait
+
+// @media only screen and (min-width: 1024px) and (max-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2)

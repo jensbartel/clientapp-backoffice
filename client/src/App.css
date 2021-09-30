@@ -243,4 +243,59 @@ a {
   margin-top: -1rem;
 }
 
+@media only screen and (min-width: 1024px) and (max-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .menu {
+    margin: 1.5rem 7.5% 1rem;
+  }
+
+  .container .user-grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 7.5%;
+  }
+
+  .clients-container {
+    margin: 0 7.5% 0;
+  }
+
+  .clients-table {
+    grid-template-columns: 1fr 1.6fr 1.3fr 0.8fr 0.3fr;
+  }
+}
+@media only screen and (min-width: 810px) and (max-width: 810px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .menu {
+    margin: 1.5rem 7.5% 1rem;
+  }
+
+  .container .user-grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 7.5%;
+  }
+
+  .clients-container {
+    margin: 0 7.5% 0;
+  }
+
+  .clients-table {
+    grid-template-columns: 1fr 1.6fr 1.3fr 0.8fr 0.3fr;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 768px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .menu {
+    margin: 1.5rem 7.5% 1rem;
+  }
+
+  .container .user-grid {
+    grid-template-columns: repeat(2, 1fr);
+    margin: 0 7.5%;
+  }
+
+  .clients-container {
+    margin: 0 7.5% 0;
+  }
+
+  .clients-table {
+    grid-template-columns: 1fr 1.6fr 1.3fr 0.8fr 0.3fr;
+  }
+}
+
 /*# sourceMappingURL=App.css.map */
