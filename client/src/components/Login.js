@@ -19,7 +19,8 @@ const Login = props => {
         // eslint-disable-next-line
     }, [isAuthenticated, props.history]);
 
-    const { email, password } = admin;
+    let { email } = admin;
+    const { password } = admin;
 
     const onChange = e => {
         setAdmin({ ...admin, [e.target.name]: e.target.value });
@@ -27,6 +28,7 @@ const Login = props => {
 
     const onSubmit = e => {
         e.preventDefault();
+        email = email.trim();
         login({
             email,
             password,

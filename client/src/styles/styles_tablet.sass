@@ -7,12 +7,17 @@
         .user-grid
             grid-template-columns: repeat(2, 1fr)
             margin: 0 7.5%
+            div
+                &:hover
+                    background-color: #999
 
     .clients-container
         margin: 0 7.5% 0
 
     .clients-table
         grid-template-columns: 1fr 1.6fr 1.3fr 0.8fr 0.3fr
+        &:hover
+            background-color: #e3e3e3
 
 // iPad Pro
 @media only screen and (min-width: 1024px) and (max-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2)
