@@ -54,9 +54,9 @@ const ClientsAll = props => {
                                         {filteredClients(user).map(client => (
                                             <div key={client._id} className='clients-table'>
                                                 <div>{client.clientName}</div>
-                                                <div>{client.email}</div>
-                                                <div>{client.company}</div>
-                                                <div>{client.position}</div>
+                                                <div className='client-hide'>{client.email}</div>
+                                                <div className='client-hide'>{client.company}</div>
+                                                <div className='client-hide'>{client.position}</div>
                                                 <div>{client.country}</div>
                                             </div>
                                         ))}
