@@ -48,56 +48,58 @@ const Menu = () => {
     Modal.setAppElement('#root');
 
     return (
-        <div className='menu'>
-            {/* Not particularly happy about these modals and the */}
-            {/* apparent necessity to use a constant for styles */}
-            <Modal isOpen={dbWarning} onRequestClose={() => setDbWarning(false)} style={defaultModal}>
-                <div className='modal-content'>
-                    <h2>Warning:</h2>
-                    <p>
-                        Deleting all data cannot be undone.
-                        <br />
-                        Proceed with caution.
-                    </p>
-                    <button onClick={onProceed}>Proceed</button>
-                    <button onClick={() => setDbWarning(false)}>Cancel</button>
-                </div>
-            </Modal>
-            <Modal isOpen={dbResetConfirm} onRequestClose={() => setDbResetConfirm(false)} style={defaultModal}>
-                <div className='modal-content'>
-                    <h2>Reset database?</h2>
-                    <button onClick={killDatabase}>Reset</button>
-                    <button onClick={() => setDbResetConfirm(false)}>Cancel</button>
-                </div>
-            </Modal>
-            <Modal isOpen={dbResetComplete} onRequestClose={() => setDbResetComplete(false)} style={defaultModal}>
-                <div className='modal-content'>
-                    <p className='move-up'>Database has been reset.</p>
-                    <button onClick={() => setDbResetComplete(false)}>Close</button>
-                </div>
-            </Modal>
+        <div className='menu-container'>
+            <div className='menu'>
+                {/* Not particularly happy about these modals and the */}
+                {/* apparent necessity to use a constant for styles */}
+                <Modal isOpen={dbWarning} onRequestClose={() => setDbWarning(false)} style={defaultModal}>
+                    <div className='modal-content'>
+                        <h2>Warning:</h2>
+                        <p>
+                            Deleting all data cannot be undone.
+                            <br />
+                            Proceed with caution.
+                        </p>
+                        <button onClick={onProceed}>Proceed</button>
+                        <button onClick={() => setDbWarning(false)}>Cancel</button>
+                    </div>
+                </Modal>
+                <Modal isOpen={dbResetConfirm} onRequestClose={() => setDbResetConfirm(false)} style={defaultModal}>
+                    <div className='modal-content'>
+                        <h2>Reset database?</h2>
+                        <button onClick={killDatabase}>Reset</button>
+                        <button onClick={() => setDbResetConfirm(false)}>Cancel</button>
+                    </div>
+                </Modal>
+                <Modal isOpen={dbResetComplete} onRequestClose={() => setDbResetComplete(false)} style={defaultModal}>
+                    <div className='modal-content'>
+                        <p className='move-up'>Database has been reset.</p>
+                        <button onClick={() => setDbResetComplete(false)}>Close</button>
+                    </div>
+                </Modal>
 
-            <p>
-                <Link to={'/all'}>View All</Link>
-            </p>
-            <p>
-                <CSVLink data={csvAll} filename={`${todaysDate}_sbk-client.csv`}>
-                    Download All
-                </CSVLink>
-            </p>
-            {location.pathname === '/clients' && currentUser && (
                 <p>
-                    <CSVLink data={csv} filename={`${todaysDate}_sbk-client_${currentUser.split('@')[0].toUpperCase()}.csv`}>
-                        Download Current
+                    <Link to={'/all'}>View All</Link>
+                </p>
+                <p>
+                    <CSVLink data={csvAll} filename={`${todaysDate}_sbk-client.csv`}>
+                        Download All
                     </CSVLink>
                 </p>
-            )}
-            <p onClick={() => setDbWarning(true)}>Reset Database</p>
-            <p>
-                <button type='button' onClick={onLogout}>
-                    Logout
-                </button>
-            </p>
+                {location.pathname === '/clients' && currentUser && (
+                    <p>
+                        <CSVLink data={csv} filename={`${todaysDate}_sbk-client_${currentUser.split('@')[0].toUpperCase()}.csv`}>
+                            Download Current
+                        </CSVLink>
+                    </p>
+                )}
+                <p onClick={() => setDbWarning(true)}>Reset Database</p>
+                <p>
+                    <button type='button' onClick={onLogout}>
+                        Logout
+                    </button>
+                </p>
+            </div>
         </div>
     );
 };

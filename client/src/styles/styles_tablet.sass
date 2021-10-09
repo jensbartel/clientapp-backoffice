@@ -1,18 +1,20 @@
 // NOTE: app is expected to be used only on Apple tablets
 =iPad-portrait
-    .menu
-        margin: 1.5rem 7.5% 1rem
+    .menu-container
+        padding: 0 7.5%
+        .menu
+            margin: 1.5rem auto 1rem
 
     .container
+        padding: 0 7.5%
         .user-grid
             grid-template-columns: repeat(2, 1fr)
-            margin: 0 7.5%
             div
                 &:hover
                     background-color: #999
 
     .clients-container
-        margin: 0 7.5% 0
+        padding: 0 7.5%
 
     .clients-table
         grid-template-columns: 1fr 1.6fr 1.3fr 0.8fr 0.3fr

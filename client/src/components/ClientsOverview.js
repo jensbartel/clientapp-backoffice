@@ -70,7 +70,7 @@ const ClientsOverview = props => {
                             ))}
                         </>
                     )}
-                    <div style={{ marginTop: '1rem' }}>
+                    <div className='back-to-top'>
                         <Link to='/'>↑ Back to Top</Link>
                     </div>
                 </div>

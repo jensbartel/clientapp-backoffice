@@ -60,23 +60,28 @@ a {
   z-index: 9999;
 }
 
-.menu {
-  margin: 1.5rem 12.5%;
+.menu-container {
+  width: 100%;
+  padding: 0 12.5%;
+}
+.menu-container .menu {
+  max-width: 1280px;
+  margin: 1.5rem auto;
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
-.menu p {
+.menu-container .menu p {
   margin-right: 2rem;
   text-decoration: underline;
   font-weight: bold;
   cursor: pointer;
   transition: 0.2s;
 }
-.menu p a:hover {
+.menu-container .menu p a:hover {
   color: #383838;
 }
-.menu p button {
+.menu-container .menu p button {
   background-color: #efefef;
   border: 1px solid grey;
   border-radius: 2px;
@@ -87,33 +92,30 @@ a {
   transition: 0.2s;
   font-size: 0.75rem;
 }
-.menu p button:hover {
+.menu-container .menu p button:hover {
   background-color: #e3e3e3;
 }
-.menu p:hover {
+.menu-container .menu p:hover {
   color: #383838;
 }
-.menu p:nth-last-child(2) {
+.menu-container .menu p:nth-last-child(2) {
   transition: 0.2s;
   color: #c4082a;
 }
-.menu p:nth-last-child(2):hover {
+.menu-container .menu p:nth-last-child(2):hover {
   color: #383838;
 }
 
 .container {
-  max-width: 1280px;
-}
-.container h5 {
-  margin: 0 0 4rem 0;
-  padding-top: 2rem;
-  text-align: center;
+  width: 100%;
+  padding: 0 12.5%;
 }
 .container .user-grid {
+  max-width: 1280px;
+  margin: auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.25rem;
-  margin: 0 12.5%;
 }
 .container .user-grid div {
   padding: 1.5rem 0;
@@ -128,10 +130,12 @@ a {
 }
 
 .clients-container {
-  margin: 0 12.5% 0;
+  padding: 0 12.5%;
 }
 
 .clients-table {
+  max-width: 1280px;
+  margin: auto;
   cursor: pointer;
   padding: 1rem 2rem;
   position: relative;
@@ -181,6 +185,11 @@ a {
 .clientpage-buttons button:first-child:hover {
   color: #fff;
   background-color: #76ad3e;
+}
+
+.back-to-top {
+  max-width: 1280px;
+  margin: 1rem auto 0;
 }
 
 .view-all {
@@ -258,20 +267,25 @@ a {
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  .menu {
-    margin: 1.5rem 7.5% 1rem;
+  .menu-container {
+    padding: 0 7.5%;
+  }
+  .menu-container .menu {
+    margin: 1.5rem auto 1rem;
   }
 
+  .container {
+    padding: 0 7.5%;
+  }
   .container .user-grid {
     grid-template-columns: repeat(2, 1fr);
-    margin: 0 7.5%;
   }
   .container .user-grid div:hover {
     background-color: #999;
   }
 
   .clients-container {
-    margin: 0 7.5% 0;
+    padding: 0 7.5%;
   }
 
   .clients-table {
@@ -282,20 +296,25 @@ a {
   }
 }
 @media only screen and (min-width: 810px) and (max-width: 810px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  .menu {
-    margin: 1.5rem 7.5% 1rem;
+  .menu-container {
+    padding: 0 7.5%;
+  }
+  .menu-container .menu {
+    margin: 1.5rem auto 1rem;
   }
 
+  .container {
+    padding: 0 7.5%;
+  }
   .container .user-grid {
     grid-template-columns: repeat(2, 1fr);
-    margin: 0 7.5%;
   }
   .container .user-grid div:hover {
     background-color: #999;
   }
 
   .clients-container {
-    margin: 0 7.5% 0;
+    padding: 0 7.5%;
   }
 
   .clients-table {
@@ -306,20 +325,25 @@ a {
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 768px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
-  .menu {
-    margin: 1.5rem 7.5% 1rem;
+  .menu-container {
+    padding: 0 7.5%;
+  }
+  .menu-container .menu {
+    margin: 1.5rem auto 1rem;
   }
 
+  .container {
+    padding: 0 7.5%;
+  }
   .container .user-grid {
     grid-template-columns: repeat(2, 1fr);
-    margin: 0 7.5%;
   }
   .container .user-grid div:hover {
     background-color: #999;
   }
 
   .clients-container {
-    margin: 0 7.5% 0;
+    padding: 0 7.5%;
   }
 
   .clients-table {
@@ -330,25 +354,27 @@ a {
   }
 }
 @media only screen and (max-width: 568px) {
-  .menu {
+  .menu-container .menu {
     flex-direction: column;
   }
-  .menu p {
+  .menu-container .menu p {
     margin: 0.33rem 0;
     line-height: 1;
   }
-  .menu p:last-child {
+  .menu-container .menu p:last-child {
     margin-top: 0.66rem;
   }
 
+  .container {
+    padding: 0 7.5%;
+  }
   .container .user-grid {
     grid-template-columns: repeat(1, 1fr);
     gap: 0.5rem;
-    margin: 0 7.5%;
   }
 
   .clients-container {
-    margin: 0 7.5%;
+    padding: 0 7.5%;
   }
 
   .clients-table {
