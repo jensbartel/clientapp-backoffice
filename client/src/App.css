@@ -267,6 +267,10 @@ a {
 }
 
 @media only screen and (min-width: 1024px) and (max-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .container .user-grid div:hover {
+    background-color: #999;
+  }
+
   .menu-container {
     padding: 0 7.5%;
   }
@@ -293,9 +297,16 @@ a {
   }
   .clients-table:hover {
     background-color: #e3e3e3;
+  }
+  .clients-table:first-child {
+    background-color: #999;
   }
 }
 @media only screen and (min-width: 810px) and (max-width: 810px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .container .user-grid div:hover {
+    background-color: #999;
+  }
+
   .menu-container {
     padding: 0 7.5%;
   }
@@ -322,9 +333,16 @@ a {
   }
   .clients-table:hover {
     background-color: #e3e3e3;
+  }
+  .clients-table:first-child {
+    background-color: #999;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 768px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+  .container .user-grid div:hover {
+    background-color: #999;
+  }
+
   .menu-container {
     padding: 0 7.5%;
   }
@@ -352,8 +370,15 @@ a {
   .clients-table:hover {
     background-color: #e3e3e3;
   }
+  .clients-table:first-child {
+    background-color: #999;
+  }
 }
 @media only screen and (max-width: 568px) {
+  .container .user-grid div:hover {
+    background-color: #999;
+  }
+
   .menu-container .menu {
     flex-direction: column;
   }
@@ -379,6 +404,12 @@ a {
 
   .clients-table {
     grid-template-columns: 1.5fr 0.5fr;
+  }
+  .clients-table:hover {
+    background-color: #e3e3e3;
+  }
+  .clients-table:first-child {
+    background-color: #999;
   }
 
   .client-hide {
