@@ -1,5 +1,7 @@
 $font-danger: #c4082a // dark red, not quite burgundy though
 $font-danger-dark: #b30000
+$maximum-width: 1600px
+// $maximum-width: 1280px
 
 // Note: the 100% adjustments are needed to keep sticky footer in place
 html
@@ -60,7 +62,7 @@ a
     width: 100%
     padding: 0 12.5%
     .menu
-        max-width: 1280px
+        max-width: $maximum-width
         margin: 1.5rem auto
         display: flex
         justify-content: flex-start
@@ -99,7 +101,7 @@ a
     width: 100%
     padding: 0 12.5%
     .user-grid
-        max-width: 1280px
+        max-width: $maximum-width
         margin: auto
         display: grid
         grid-template-columns: repeat(3, 1fr)
@@ -119,7 +121,7 @@ a
     padding: 0 12.5%
 
 .clients-table
-    max-width: 1280px
+    max-width: $maximum-width
     margin: auto
     cursor: pointer
     padding: 1rem 2rem
