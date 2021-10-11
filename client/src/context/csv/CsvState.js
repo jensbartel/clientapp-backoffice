@@ -35,6 +35,21 @@ const CsvState = props => {
         return returnValue;
     };
 
+    const greetingCode = value => {
+        switch (value) {
+            case '2':
+                return '6';
+            case '3':
+                return '7';
+            case '4':
+                return '9';
+            case '5':
+                return '12';
+            default:
+                return value;
+        }
+    };
+
     const countryCode = value => {
         const val = value.toLowerCase();
         if (Object.keys(codes).includes(val) === false) {
@@ -92,7 +107,7 @@ const CsvState = props => {
             arrayToPush[8] = countryCode(client.country);
             arrayToPush[1] = client.date.slice(0, 10).replaceAll('-', '/');
             arrayToPush[7] = client.email;
-            arrayToPush[4] = client.greeting;
+            arrayToPush[4] = greetingCode(client.greeting);
             arrayToPush[3] = client.incharge;
             arrayToPush[6] = client.industry;
             arrayToPush[17] = client.mobile;
