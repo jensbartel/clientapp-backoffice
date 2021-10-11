@@ -5,6 +5,7 @@ import ClientsContext from '../context/clients/clientsContext';
 import UsersContext from '../context/users/usersContext';
 import CsvContext from '../context/csv/csvContext';
 import Menu from './Menu';
+import { NotFound } from 'http-errors';
 
 const ClientsOverview = props => {
     const authContext = useContext(AuthContext);

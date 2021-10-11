@@ -238,8 +238,12 @@ a {
   background-color: #555;
 }
 
-.not-found {
-  margin: 1.5rem 12.5% 0;
+.not-found-container {
+  padding: 0 12.5%;
+}
+.not-found-container div {
+  max-width: 1600px;
+  margin: 2.5rem auto 0;
 }
 
 .modal-content h2 {
