@@ -28,8 +28,8 @@ const ClientsAll = props => {
     }, []);
 
     useEffect(() => {
-        if (clients) {
-            generateCsv(clients);
+        if (clients && users) {
+            generateCsv(clients, users);
         }
         // eslint-disable-next-line
     }, []);

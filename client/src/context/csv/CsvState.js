@@ -58,68 +58,110 @@ const CsvState = props => {
         return codes[val];
     };
 
-    const generate = clients => {
+    const matchUser = (inCharge, users) => {
+        const inChargeEdit = inCharge.substring(5); // remove "user-..."
+        const filtered = users.filter(user => user._id === inChargeEdit);
+        let value = 'undefined';
+        if (filtered[0].name) {
+            value = eigyoTanto[filtered[0].name];
+        }
+
+        return value;
+    };
+
+    const nameWithoutKana = name => {
+        let returnName = name;
+        if (name.includes('（')) {
+            const nameArray = name.split('（');
+            returnName = nameArray[0];
+        } else returnName = name;
+
+        return returnName;
+    };
+
+    const kanaName = name => {
+        let returnName = '';
+        if (name.includes('（')) {
+            const kana = name.split('（');
+            returnName = kana[1].substring(0, kana[1].length - 1);
+        }
+        return returnName;
+    };
+
+    const generate = (clients, users) => {
         const today = new Date();
         const date = today.getFullYear() + ('0' + (today.getMonth() + 1)).slice(-2) + today.getDate();
 
         let gyomuArray = [
             [
-                'No',
-                '日付',
-                '顧客＃',
-                '担当',
-                '敬称',
-                '顧客名',
-                '業界',
-                'メールアドレス',
-                '国（在）',
-                '住所 line 1',
-                '住所 line 2',
-                '住所 ZIP code',
-                '勤務先 line 1',
-                '勤務先 line 2',
-                '勤務先 ZIP code',
-                '役職',
-                'Tel.',
-                'Mobile',
-                'FAX',
-                'Tel. (Work)',
-                'Mobile (Work)',
-                'FAX (Work)',
-                '備考',
-                'Wanobi catalog',
-                'Catalog Home',
-                'Catalog Office',
-                '会社名 Company',
-                'キーワード Keyword',
+                '支店名(コード指定、未入力時は「本社」)',
+                '海外フラグ(1=海外、0もしくは未入力時は海外ではない)',
+                '★顧客名(必須)',
+                '★顧客名かな',
+                '★敬称(コード指定、未入力時は「様」)',
+                '★生年月日(YYYY/MM/DD)',
+                '★地区名(コード指定)',
+                '★キーワード',
+                '登録日(YYYY/MM/DD)',
+                '★自宅郵便番号(ハイフン有り無し、どちらでも可)',
+                '★自宅住所１',
+                '★自宅住所２',
+                '★自宅電話番号１(ハイフン有り無し、どちらでも可)',
+                '★自宅電話番号２(ハイフン有り無し、どちらでも可)',
+                '★自宅FAX(ハイフン有り無し、どちらでも可)',
+                '★勤務先名',
+                '★勤務先内容',
+                '★役職名',
+                '★勤務先郵便番号(ハイフン有り無し、どちらでも可)',
+                '★勤務先住所１',
+                '★勤務先住所２',
+                '★勤務先電話番号１(ハイフン有り無し、どちらでも可)',
+                '★勤務先電話番号２(ハイフン有り無し、どちらでも可)',
+                '★勤務先FAX(ハイフン有り無し、どちらでも可)',
+                '状況区分(コード指定、未入力時は「本人」)',
+                '本人状況内容',
+                '★紹介状況内容',
+                '其他状況内容',
+                '★ＤM発行（目録）(する=1 しない=0)',
+                '★自宅送付(する=1 しない=0)',
+                '★勤務先送付(する=1 しない=0)',
+                '★営業担当(コード指定)',
+                '新規NT(コード指定)',
+                '★送付ランク(コード指定)',
+                '★目録種類(コード指定)',
+                '★備考',
+                '★メールアドレス',
             ],
         ];
 
         let arrayToPush = [];
 
-        let counter = 0;
         clients.forEach(client => {
-            counter += 1;
-            arrayToPush = repeat(28, '');
-            arrayToPush[0] = counter.toString();
-            arrayToPush[5] = client.clientName;
-            arrayToPush[26] = client.company;
-            arrayToPush[8] = countryCode(client.country);
-            arrayToPush[1] = client.date.slice(0, 10).replaceAll('-', '/');
-            arrayToPush[7] = client.email;
+            arrayToPush = repeat(30, '');
+            arrayToPush[1] = '1';
+            arrayToPush[2] = nameWithoutKana(client.clientName);
+            arrayToPush[3] = kanaName(client.clientName);
+            arrayToPush[15] = client.company;
+            arrayToPush[6] = countryCode(client.country);
+            arrayToPush[8] = client.date.slice(0, 10).replaceAll('-', '/');
+            arrayToPush[36] = client.email;
             arrayToPush[4] = greetingCode(client.greeting);
-            arrayToPush[3] = client.incharge;
-            arrayToPush[6] = client.industry;
-            arrayToPush[17] = client.mobile;
-            arrayToPush[22] = client.notes;
-            arrayToPush[15] = client.position;
-            arrayToPush[9] = addressFieldChecks(client.reviewAddressLine1);
-            arrayToPush[10] = addressFieldChecks(client.reviewAddressLine2);
-            arrayToPush[16] = client.tel;
+            arrayToPush[31] = matchUser(client._partition, users);
+            arrayToPush[16] = client.industry;
+            arrayToPush[13] = client.mobile;
+            arrayToPush[35] = client.notes;
+            arrayToPush[17] = client.position;
+            arrayToPush[10] = addressFieldChecks(client.reviewAddressLine1);
+            arrayToPush[11] = addressFieldChecks(client.reviewAddressLine2);
+            arrayToPush[12] = client.tel;
+            arrayToPush[28] = '0';
+            arrayToPush[29] = '1';
+            arrayToPush[30] = '0';
+            arrayToPush[33] = '1';
             if (client.wanobi === '1') {
-                arrayToPush[23] = 'TRUE';
+                arrayToPush[34] = '2';
             } else {
-                arrayToPush[23] = 'FALSE';
+                arrayToPush[34] = '6';
             }
 
             gyomuArray.push(arrayToPush);
@@ -129,8 +171,8 @@ const CsvState = props => {
     };
 
     // generate CSV
-    const generateCsv = clients => {
-        const data = generate(clients);
+    const generateCsv = (clients, users) => {
+        const data = generate(clients, users);
 
         dispatch({ type: GENERATE_CSV, payload: data });
     };
@@ -141,8 +183,9 @@ const CsvState = props => {
     };
 
     // generate CSV for one user
-    const generateCsvForOne = (clients, user) => {
-        const data = generate(clients);
+    const generateCsvForOne = (clients, user, id) => {
+        const userName = [{ name: user, _id: id }];
+        const data = generate(clients, userName);
 
         dispatch({ type: GENERATE_CSV_ONEUSER, payload: data });
     };
@@ -164,3 +207,13 @@ const CsvState = props => {
 };
 
 export default CsvState;
+
+// ****
+const eigyoTanto = {
+    'yamauchi@shibunkaku.co.jp': '359',
+    'ymaruyama@shibunkaku.co.jp': '388 Yoko',
+    'ryo@shibunkaku.co.jp': '403',
+    'he@shibunkaku.co.jp': '424',
+    'bartel@shibunkaku.co.jp': '425',
+    'ku@shibunkaku.co.jp': '426',
+};

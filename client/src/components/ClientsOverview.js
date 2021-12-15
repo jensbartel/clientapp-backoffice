@@ -5,7 +5,7 @@ import ClientsContext from '../context/clients/clientsContext';
 import UsersContext from '../context/users/usersContext';
 import CsvContext from '../context/csv/csvContext';
 import Menu from './Menu';
-import { NotFound } from 'http-errors';
+// import { NotFound } from 'http-errors';
 
 const ClientsOverview = props => {
     const authContext = useContext(AuthContext);
@@ -29,13 +29,13 @@ const ClientsOverview = props => {
     }, []);
 
     useEffect(() => {
-        if (clients) {
-            generateCsv(clients);
+        if (clients && users) {
+            generateCsv(clients, users);
         }
         if (clients && users && currentUser) {
             const currentUserLocal = users.filter(item => item.name === currentUser)[0];
             const filtered = clients.filter(item => item._partition === currentUserLocal._partition);
-            generateCsvForOne(filtered, currentUserLocal.name);
+            generateCsvForOne(filtered, currentUserLocal.name, currentUserLocal._id);
         }
         // eslint-disable-next-line
     }, [clients, users]);
