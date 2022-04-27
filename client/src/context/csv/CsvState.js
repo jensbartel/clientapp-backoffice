@@ -138,7 +138,12 @@ const CsvState = props => {
 
         clients.forEach(client => {
             arrayToPush = repeat(30, '');
-            arrayToPush[1] = '1';
+            // arrayToPush[1] = '1';
+            if (client.country === '日本') {
+                arrayToPush[1] = ''
+            } else {
+                arrayToPush[1] = '1'
+            }
             arrayToPush[2] = nameWithoutKana(client.clientName);
             arrayToPush[3] = kanaName(client.clientName);
             arrayToPush[15] = client.company;
@@ -151,13 +156,19 @@ const CsvState = props => {
             arrayToPush[13] = client.mobile;
             arrayToPush[35] = client.notes;
             arrayToPush[17] = client.position;
+            arrayToPush[9] = client.zipcode;
             arrayToPush[10] = addressFieldChecks(client.reviewAddressLine1);
-            arrayToPush[11] = addressFieldChecks(client.reviewAddressLine2);
+            arrayToPush[11] = client.city;
             arrayToPush[12] = client.tel;
             arrayToPush[28] = '0';
-            arrayToPush[29] = '1';
+            arrayToPush[29] = '0';
             arrayToPush[30] = '0';
-            arrayToPush[33] = '1';
+            // arrayToPush[33] = '1';
+            if (client.country === '日本') {
+                arrayToPush[33] = '1'
+            } else {
+                arrayToPush[33] = '7'
+            }
             if (client.wanobi === '1') {
                 arrayToPush[34] = '2';
             } else {
@@ -210,10 +221,18 @@ export default CsvState;
 
 // ****
 const eigyoTanto = {
+    'dai@shibunkaku.co.jp': '219',
+    'irie@shibunkaku.co.jp': '225',
+    'yamamoto@shibunkaku.co.jp': '226',
+    'kaneko@shibunkaku.co.jp': '228',
     'yamauchi@shibunkaku.co.jp': '359',
-    'ymaruyama@shibunkaku.co.jp': '388 Yoko',
+    'ymaruyama@shibunkaku.co.jp': '388',
     'ryo@shibunkaku.co.jp': '403',
     'he@shibunkaku.co.jp': '424',
     'bartel@shibunkaku.co.jp': '425',
     'ku@shibunkaku.co.jp': '426',
+    'yoshioka@shibunkaku.co.jp': '428',
+    'shimizu@shibunkaku.co.jp': '429',
+    'nagata@shibunkaku.co.jp': '437',
+    'kariya@shibunkaku.co.jp': '438',
 };
