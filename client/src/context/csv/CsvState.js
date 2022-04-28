@@ -138,11 +138,18 @@ const CsvState = props => {
 
         clients.forEach(client => {
             arrayToPush = repeat(30, '');
-            // arrayToPush[1] = '1';
-            if (client.country === '日本') {
-                arrayToPush[1] = ''
+            if (client.country === '日本' || client.country === 'Japan') {
+                arrayToPush[1] = '';
+                arrayToPush[9] = client.zipcode;
+                arrayToPush[10] = client.city;
+                arrayToPush[11] = addressFieldChecks(client.reviewAddressLine2)
+                arrayToPush[33] = '1';
             } else {
-                arrayToPush[1] = '1'
+                arrayToPush[1] = '1';
+                arrayToPush[9] = '';
+                arrayToPush[10] = addressFieldChecks(client.reviewAddressLine1);
+                arrayToPush[11] = client.city + ' ' + client.zipcode;
+                arrayToPush[33] = '7';
             }
             arrayToPush[2] = nameWithoutKana(client.clientName);
             arrayToPush[3] = kanaName(client.clientName);
@@ -156,22 +163,17 @@ const CsvState = props => {
             arrayToPush[13] = client.mobile;
             arrayToPush[35] = client.notes;
             arrayToPush[17] = client.position;
-            arrayToPush[9] = client.zipcode;
-            arrayToPush[10] = addressFieldChecks(client.reviewAddressLine1);
-            arrayToPush[11] = client.city;
             arrayToPush[12] = client.tel;
-            arrayToPush[28] = '0';
-            arrayToPush[29] = '0';
             arrayToPush[30] = '0';
-            // arrayToPush[33] = '1';
-            if (client.country === '日本') {
-                arrayToPush[33] = '1'
-            } else {
-                arrayToPush[33] = '7'
-            }
-            if (client.wanobi === '1') {
+            
+            if (client.wanobi === '1') { // Wanobi
+                arrayToPush[28] = '1';
+                arrayToPush[29] = '1';
                 arrayToPush[34] = '2';
-            } else {
+                
+            } else { // no Wanobi
+                arrayToPush[28] = '0';
+                arrayToPush[29] = '0';
                 arrayToPush[34] = '6';
             }
 
